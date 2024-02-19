@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - .github/**
       - apps/common
       - apps/project1
       - packages/**
@@ -23,7 +24,7 @@ jobs:
           node-version: 14
 
       - name: Install dependencies
-        run: npm ci
+        run: cd apps/project1 & npm ci
 
       - name: Get the latest tag
         id: get_tag
