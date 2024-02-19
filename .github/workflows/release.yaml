@@ -24,13 +24,17 @@ jobs:
           node-version: 14
 
       - name: Install dependencies
-        run: |
-          cd  ./apps/project1
-          npm install
+        run: npm ci
 
-      - name: Get the latest tag
-        id: get_tag
-        run: echo "::set-output name=tag::$(git describe --tags --abbrev=0)"
+      - name: Get the current version
+        id: get_version
+        run: echo "::set-output name=version::$(node -p "require('./apps/project1/package.json').version")"
+
+      - name: Bump version
+        id: bump_version
+        run: echo "::set-output name=new_version::$(node -e "const semver = require('semver'); const currentVersion = process.env.INPUT_VERSION; console.log(semver.inc(currentVersion, 'patch'))")"
+        env:
+          INPUT_VERSION: ${{ steps.get_version.outputs.version }}
 
       - name: Run semantic-release
         run: npx semantic-release
@@ -39,8 +43,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: apps/project1/*  # Include any artifacts or files you want to attach to the release
-          tag_name: ${{ steps.get_tag.outputs.tag }}
-          title: Release ${{ steps.get_tag.outputs.tag }}
-          body: ${{ steps.get_tag.outputs.tag }} Release
+          tag_name: ${{ steps.bump_version.outputs.new_version }}
+          title: Release ${{ steps.bump_version.outputs.new_version }}
+          body: ${{ steps.bump_version.outputs.new_version }} Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
