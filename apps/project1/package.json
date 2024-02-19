@@ -3,5 +3,12 @@
   "version": "1.0.0",
   "description": "Project 1",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "semantic-release": "^17.0.7",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/exec": "^6.0.0",
+    "@semantic-release/git": "^10.0.0",
+    "@semantic-release/github": "^7.0.2"
+  }
 }
