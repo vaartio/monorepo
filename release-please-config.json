@@ -6,7 +6,7 @@
   "prerelease": true,
   "packages": {
     "apps/project1": {
-      "plugins": ["node-workspace"]
+      "extra-files": ["packages/ui/**"]
     },
     "apps/project2": {
       "extra-files": ["packages/ui/**"]
