@@ -1,7 +1,8 @@
 on:
+  workflow_dispatch:
   push:
     branches:
-      - main
+      - release-candidate
 
 permissions:
   contents: write
@@ -22,4 +23,4 @@ jobs:
           # this is a built-in strategy in release-please, see "Action Inputs"
           # for more options
           release-type: node
-          target-branch: release-candidate
+          target-branch: release
