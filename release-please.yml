@@ -1,0 +1,12 @@
+releaseType: node
+handleGHRelease: true
+bumpMinorPreMajor: true
+path: 'packages/my-package'
+packageName: 'my-package'
+releaseLabels: ['autorelease: pending', 'release-please']
+branches:
+  - name: release
+    prerelease: false
+  - name: release-candidate
+    prerelease: true
+    prereleaseBranchName: 'release-candidate'
