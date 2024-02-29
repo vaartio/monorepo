@@ -4,13 +4,13 @@
   "bump-patch-for-minor-pre-major": false,
   "draft": false,
   "prerelease": true,
+  "release-type": "node",
+  "extra-files": ["packages/ui/**"],
   "packages": {
     "apps/project1": {
-      "extra-files": ["packages/ui/**"],
       "plugins": ["node-workspace"]
     },
     "apps/project2": {
-      "extra-files": ["packages/ui/**"],
       "plugins": ["node-workspace"]
     }
   },
