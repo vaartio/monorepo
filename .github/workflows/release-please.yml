@@ -25,7 +25,7 @@ jobs:
           # this is a built-in strategy in release-please, see "Action Inputs"
           # for more options
           release-type: node
-          target-branch: main
+          target-branch: release-candidate
       - uses: google-github-actions/release-please-action@v4
         if: github.ref == 'refs/heads/release-candidate'
         with:
@@ -36,4 +36,4 @@ jobs:
           # this is a built-in strategy in release-please, see "Action Inputs"
           # for more options
           release-type: node
-          target-branch: release-candidate
+          target-branch: release
